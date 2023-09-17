@@ -28,6 +28,7 @@ const IconInput = ({
   width = 250,
   size,
   placeholder,
+  ...delegated
 }) => {
 
   const styles = SIZES[size]
@@ -42,7 +43,7 @@ const IconInput = ({
     placeholder={placeholder}
     style={{
       '--width' : width + 'px',
-      '--fontSize' : styles.fontSize + 'px',
+      '--fontSize' : styles.fontSize / 16 + 'rem',
       '--borderThickness' : styles.borderThickness + 'px',
       '--iconSpacing': styles.iconSpacing + 'px',
       '--padding': styles.padding + 'px'
@@ -61,6 +62,10 @@ const IconInput = ({
 const InputWrapper = styled.div`
   position: relative;
   color: ${COLORS.gray700};
+
+  &:hover {
+    color: ${COLORS.black};
+  }
 `
 
 const InputText = styled.input`
@@ -73,24 +78,23 @@ const InputText = styled.input`
       which tends to be funky and not nice
   */
   font-weight: 700;
-  color: ${COLORS.gray700};
+  color: inherit;
   border: none;
   border-bottom: var(--borderThickness) solid ${COLORS.black};
   padding: var(--padding);
   padding-inline-start: var(--iconSpacing);
+  outline-offset: 2px;
 
   &::placeholder {
     color: ${COLORS.gray500};
     font-weight: 500;
   }
 
-  &:focus {
+  /** Does not need to be under focus selector */
+  /** &:focus {
       outline-offset: 2px;
   }
-
-  &:hover {
-    color: ${COLORS.black};
-  }
+  */
 `
 
 const IconWrapper = styled.div`
@@ -108,9 +112,11 @@ const IconWrapper = styled.div`
   width: var(--iconSize);
   height: var(--iconSize);
 
-  ${InputText}:hover + & {
+  /** too complicated way, just hover on input wrapper */
+  /** ${InputText}:hover + & {
     color: ${COLORS.black}
   }
+  */
 `
 
 export default IconInput;
