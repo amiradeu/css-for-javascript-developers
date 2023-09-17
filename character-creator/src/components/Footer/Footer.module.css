@@ -1,0 +1,16 @@
+.footer {
+  position: relative;
+  padding: 64px;
+  background: hsl(0deg, 0%, 5%);
+  color: white;
+  text-align: center;
+}
+
+.footer a {
+  /* 🍄 initial solution 🍄 */
+  /* color: white; */
+
+  /* 🌼 better solution 🌼 */
+  /* takes text properties around it */
+  color: inherit;
+}

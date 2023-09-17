@@ -1,0 +1,28 @@
+.buttonRow {
+    /* 🌼 better solution 🌼 */
+    /* initial is at wrong file: ControlPane */
+
+    /* will introduce empty scroll when not necessary*/
+    /* overflow-x: scroll; */
+
+    /* most recommended */
+    overflow: auto;
+    white-space: nowrap;
+
+    /* instead of 24px from parent,
+    use 22px for a bit of breating space */
+
+    /* make it go till the edge (end-to-end) */
+    margin-inline-start: -22px;
+    margin-inline-end: -22px;
+    /* move scrollbar right to the bottom edge */
+    margin-block-end: -22px;
+
+    /* re-introduce nice breathing space */
+    padding: 22px;
+
+    /* 🍓 issue non existence due to workshop updated.
+    fix for absolutely-positioned visually-hidden
+    labels for accesibility. We want it to be contained by this scroll element. 🍓 */
+    /* position: relative; */
+}
