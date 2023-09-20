@@ -31,42 +31,27 @@ const ShoeCard = ({
       ? 'new-release'
       : 'default'
 
-  const VARIANTS = {
-    'on-sale' : {
-      '--color': COLORS.primary,
-      '--opacity': 1
-    },
-    'new-release' : {
-      '--color': COLORS.secondary,
-      '--opacity': 1
-    },
-    'default' : {
-      '--color': COLORS.primary,
-      '--opacity': 0
-    }
-  }
-  const variantText = variant === 'on-sale' ? 'Sale' : variant === 'new-release' ? 'New Released!' : ''
-
-  const styles = VARIANTS[variant]
-
   return (
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
+          { variant === 'on-sale' && <SaleFlag>Sale</SaleFlag> }
+          { variant === 'new-release' && <ReleaseFlag>Just Released!</ReleaseFlag> }
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <Price>{formatPrice(price)}</Price>
+          <Price style={{
+            '--color': variant === 'on-sale' ? COLORS.gray[700] : undefined,
+            '--text-decoration': variant === 'on-sale' ? 'line-through' : undefined
+          }} >{formatPrice(price)}</Price>
         </Row>
         <Row>
           <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
+          { variant === 'on-sale' ? <SalePrice>{formatPrice(salePrice)}</SalePrice> : undefined }
         </Row>
       </Wrapper>
-      <Flag style={styles}>
-        {variantText}
-      </Flag>
     </Link>
   );
 };
@@ -74,35 +59,40 @@ const ShoeCard = ({
 const Link = styled.a`
   text-decoration: none;
   color: inherit;
-  flex: 1 1 345px;
 `;
 
-const Wrapper = styled.article`
-
-`;
-
-const Flag = styled.span`
-  position: relative;
-  top: 12px;
-  right: -4px;
-  padding: 8px;
-  color: ${COLORS.white};
-  background-color: var(--color);
-  opacity: var(--opacity);
-  border-radius: 2px;
-`
+const Wrapper = styled.article``;
 
 const ImageWrapper = styled.div`
   position: relative;
-  border-radius: 16px 16px 4px 4px;
-  overflow: hidden;
-  padding-bottom: 32px;
-  background-color: hsl(220deg, 0%, 96%);
 `;
 
 const Image = styled.img`
   width: 100%;
+  border-radius: 16px 16px 4px 4px;
 `;
+
+const Flag = styled.span`
+  position: absolute;
+  top: 12px;
+  right: -4px;
+  height: 32px;
+  padding: 0 10px;
+
+  font-size: ${14/16}rem;
+  font-weight: ${WEIGHTS.bold};
+  line-height: 32px;
+  color: ${COLORS.white};
+  border-radius: 2px;
+`
+
+const SaleFlag = styled(Flag)`
+  background-color: ${COLORS.primary};
+`
+
+const ReleaseFlag = styled(Flag)`
+  background-color: ${COLORS.secondary};
+`
 
 const Row = styled.div`
   font-size: 1rem;
@@ -115,7 +105,10 @@ const Name = styled.h3`
   color: ${COLORS.gray[900]};
 `;
 
-const Price = styled.span``;
+const Price = styled.span`
+  color: var(--color);
+  text-decoration: var(--text-decoration);
+`;
 
 const ColorInfo = styled.p`
   color: ${COLORS.gray[700]};

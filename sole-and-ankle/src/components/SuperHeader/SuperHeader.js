@@ -26,7 +26,9 @@ const Wrapper = styled.div`
   font-size: 0.875rem;
   color: ${COLORS.gray[300]};
   background-color: ${COLORS.gray[900]};
-  padding: 12px 32px;
+  // keep superheader content at fixed size is better for its purpose
+  height: 2.5rem;
+  padding-inline: 32px;
   display: flex;
   align-items: center;
   gap: 24px;
