@@ -144,6 +144,14 @@ a {
   .social-icons {
     display: none;
   }
+
+  /* SOLUTION NO.1
+  icons and decorations
+  are shown in opposite condition
+  */
+  /* main {
+    overflow: hidden;
+  } */
 }
 
 .heading-decoration {
@@ -159,4 +167,34 @@ a {
 
 .heading-content {
   position: relative;
+}
+
+/* SOLUTION NO.2
+  icons and others are independent
+*/
+.centered-stuff.floating {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.social-icons {
+  pointer-events: auto;
+}
+
+.centered-stuff.floating .max-width-wrapper {
+  height: 100%;
+}
+
+/* for .centered-stuff to take up it's height
+    so that it can be sticky throughout the whole content
+*/
+main {
+  position: relative;
+}
+
+/* hide any elements that goes beyond it */
+.centered-stuff:not(.floating) {
+  overflow: hidden;
 }

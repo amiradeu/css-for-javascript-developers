@@ -1362,8 +1362,14 @@ video {
 	max-width: 42rem !important;
 }
 
+/* tailwind utility class
+	not meant to be changed
+	but just for exercise sake is ok
+*/
 .max-w-md {
-	max-width: 28rem !important;
+	/* limit image size */
+	max-width: min(28rem, 100%) !important;
+	/* max-width: 28rem !important; */
 }
 
 .max-w-80 {
