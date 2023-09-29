@@ -15,11 +15,13 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
 
   return (
     <Overlay isOpen={isOpen} onDismiss={onDismiss}>
-      <Content aria-label="Mobile Navigation">
-        <CloseButton onClick={onDismiss}>
-          <Icon id="close" />
-          <VisuallyHidden>Dismiss menu</VisuallyHidden>
-        </CloseButton>
+      <Content aria-label="Menu">
+        <Filler>
+          <CloseButton onClick={onDismiss}>
+            <Icon id="close" />
+            <VisuallyHidden>Dismiss menu</VisuallyHidden>
+          </CloseButton>
+        </Filler>
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -46,35 +48,47 @@ const Overlay = styled(DialogOverlay)`
   left: 0;
   background: hsl(220deg 5% 40% / 0.8);
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: flex-end;
 `
 
 const Content = styled(DialogContent)`
-  position: relative;
+  ${'' /* position: relative; */}
   /* width: 300px; */
+  height: 100%;
   padding: 32px;
   background: ${COLORS.white};
   display: flex;
   flex: 0 1 300px;
   flex-direction: column;
-  justify-content: space-between;
+  /*
+    design actually centers the nav,
+    not just simply space-between
+   */
+  /* justify-content: space-between; */
 `
 
 const CloseButton = styled(UnstyledButton)`
-  margin-left: auto;
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  padding: 16px;
 `
 
-const Nav = styled.div`
+const Filler = styled.div`
+  flex: 1;
+`
+const Nav = styled.nav`
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  /* 22px - 6px to compensate for
+    text box being larger in web
+    compared to the design
+  */
+  gap: 16px;
 `
 
-const Link = styled.a`
+const NavLink = styled.a`
   text-decoration: none;
-`
-
-const NavLink = styled(Link)`
   text-transform: uppercase;
   color: ${COLORS.gray[900]};
   font-size: ${18 / 16}rem;
@@ -85,14 +99,20 @@ const NavLink = styled(Link)`
   }
 `
 
-const FooterLink = styled(Link)`
-  color: ${COLORS.gray[700]};
-  font-size: ${14 / 16}rem;
-`
-
 const Footer = styled.div`
+  flex: 1;
+
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  /* bring to bottom end */
+  justify-content: flex-end;
+  /* design compensation: 14-4px */
+  gap: 10px;
+`
+
+const FooterLink = styled.a`
+  text-decoration: none;
+  color: ${COLORS.gray[700]};
+  font-size: ${14 / 16}rem;
 `
 export default MobileMenu;
