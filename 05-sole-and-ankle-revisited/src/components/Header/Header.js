@@ -20,12 +20,18 @@ const Header = () => {
                 <Logo />
             </LogoWrapper>
             <DesktopNav>
-                <NavLink href="/sale">Sale</NavLink>
+                <NavLink href="/sale">A Vendre</NavLink>
+                <NavLink href="/new">Nouvelles Versions</NavLink>
+                <NavLink href="/men">Hommes</NavLink>
+                <NavLink href="/women">Femmes</NavLink>
+                <NavLink href="/kids">Les Enfants</NavLink>
+                <NavLink href="/collections">Collections</NavLink>
+                {/* <NavLink href="/sale">Sale</NavLink>
                 <NavLink href="/new">New&nbsp;Releases</NavLink>
                 <NavLink href="/men">Men</NavLink>
                 <NavLink href="/women">Women</NavLink>
                 <NavLink href="/kids">Kids</NavLink>
-                <NavLink href="/collections">Collections</NavLink>
+                <NavLink href="/collections">Collections</NavLink> */}
             </DesktopNav>
             <MobileActions>
                 <ShoppingBagButton>
@@ -71,8 +77,17 @@ const MainHeader = styled.div`
 `;
 
 const DesktopNav = styled.nav`
+  overflow: auto;
   display: flex;
-  gap: 48px;
+  /*
+    min 950px 1rem
+    max  device 48px (3rem)
+  */
+  gap: clamp(
+    1rem,
+    5vw - 2rem,
+    3rem
+  );
   margin: 0px 48px;
 
   @media ${QUERIES.tabletAndSmaller} {
@@ -107,6 +122,7 @@ const NavLink = styled.a`
   text-decoration: none;
   color: ${COLORS.gray[900]};
   font-weight: ${WEIGHTS.medium};
+  text-wrap: nowrap;
 
   &:first-of-type {
     color: ${COLORS.secondary};
