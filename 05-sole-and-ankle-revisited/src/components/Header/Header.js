@@ -20,11 +20,11 @@ const Header = () => {
                 <Logo />
             </LogoWrapper>
             <DesktopNav>
-                <NavLink href="/sale">A Vendre</NavLink>
-                <NavLink href="/new">Nouvelles Versions</NavLink>
+                <NavLink href="/sale">A&nbsp;Vendre</NavLink>
+                <NavLink href="/new">Nouvelles&nbsp;Versions</NavLink>
                 <NavLink href="/men">Hommes</NavLink>
                 <NavLink href="/women">Femmes</NavLink>
-                <NavLink href="/kids">Les Enfants</NavLink>
+                <NavLink href="/kids">Les&nbsp;Enfants</NavLink>
                 <NavLink href="/collections">Collections</NavLink>
                 {/* <NavLink href="/sale">Sale</NavLink>
                 <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -59,10 +59,10 @@ const Header = () => {
 };
 
 const MainHeader = styled.div`
+  overflow: auto;
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
-  height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
 
   @media ${QUERIES.tabletAndSmaller} {
@@ -77,7 +77,6 @@ const MainHeader = styled.div`
 `;
 
 const DesktopNav = styled.nav`
-  overflow: auto;
   display: flex;
   /*
     min 950px 1rem
@@ -85,8 +84,8 @@ const DesktopNav = styled.nav`
   */
   gap: clamp(
     1rem,
-    5vw - 2rem,
-    3rem
+    9.2vw - 4.5rem,
+    3.5rem
   );
   margin: 0px 48px;
 
@@ -122,7 +121,6 @@ const NavLink = styled.a`
   text-decoration: none;
   color: ${COLORS.gray[900]};
   font-weight: ${WEIGHTS.medium};
-  text-wrap: nowrap;
 
   &:first-of-type {
     color: ${COLORS.secondary};
