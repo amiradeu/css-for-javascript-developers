@@ -1,33 +1,25 @@
 import styled from 'styled-components';
 
 const Calendar = () => (
-	<Center>
-      <Wrapper>
-        {DAYS.map((day) => (
-          <Day key={day}>{day}</Day>
-        ))}
-      </Wrapper>
-    </Center>
+  <Wrapper>
+    {DAYS.map((day) => (
+      <Day key={day}>{day}</Day>
+    ))}
+  </Wrapper>
 );
-
-const Center = styled.div`
-  display: flex;
-  justify-content: center;
-`;
 
 const Wrapper = styled.div`
   border: 3px solid;
   padding: 16px;
-
+  width: max-content;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 2px;
+  grid-template-columns: repeat(7, 2rem);
+  gap: 4px;
 `;
 
 const Day = styled.div`
   border: 2px solid;
   border-radius: 4px;
-  width: 2rem;
   height: 2rem;
   display: flex;
   justify-content: center;
