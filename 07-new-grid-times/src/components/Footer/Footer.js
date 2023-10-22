@@ -151,7 +151,7 @@ const TopRow = styled.div`
     justify-content: center;
   }
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     justify-content: flex-end;
   }
 `;
@@ -213,7 +213,7 @@ const Subfooter = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     align-items: flex-start;
   }
 `;

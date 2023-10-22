@@ -12,7 +12,7 @@ import MainStory from '../MainStory';
 import SecondaryStory from '../SecondaryStory';
 import OpinionStory from '../OpinionStory';
 import Advertisement from '../Advertisement';
-import { COLORS, QUERIES } from '../../constants';
+import { QUERIES } from '../../constants';
 
 const MainStoryGrid = () => {
   return (
@@ -77,12 +77,12 @@ const MainStorySection = styled.section`
 
   @media ${QUERIES.tabletOnly} {
     padding-right: 16px;
-    border-right: 1px solid ${COLORS.gray[300]};
+    border-right: 1px solid var(--color-gray-300);
   }
 
   @media ${QUERIES.laptopAndUp} {
     padding-right: 16px;
-    border-right: 1px solid ${COLORS.gray[300]};
+    border-right: 1px solid var(--color-gray-300);
   }
 `;
 
@@ -96,7 +96,7 @@ const SecondaryStorySection = styled.section`
   @media ${QUERIES.laptopAndUp} {
     padding-inline: 16px;
     padding-block-end: 16px;
-    border-right: 1px solid ${COLORS.gray[300]};
+    border-right: 1px solid var(--color-gray-300);
   }
 `;
 
@@ -116,7 +116,7 @@ const AdvertisementSection = styled.section`
     margin-inline-start: 16px;
     margin-block-start: 16px;
     padding-block-start: 16px;
-    border-top: 1px solid ${COLORS.gray[300]};
+    border-top: 1px solid var(--color-gray-300);
   }
 `;
 
@@ -126,7 +126,7 @@ const StoryList = styled.div`
 
   & > *:not(:last-child) {
     padding-bottom: 16px;
-    border-bottom: 1px solid ${COLORS.gray[300]};
+    border-bottom: 1px solid var(--color-gray-300);
   }
 
   & > *:not(:first-child) {

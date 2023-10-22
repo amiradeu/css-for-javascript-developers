@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { Menu, Search, User } from 'react-feather';
 
-import { COLORS, QUERIES } from '../../constants';
+import { QUERIES } from '../../constants';
 
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import VisuallyHidden from '../VisuallyHidden';
@@ -30,22 +30,20 @@ const Header = () => {
         </Row>
       </SuperHeader>
       <MainHeader>
-        <DesktopActions>
-          <ActionGroup>
+        <DesktopActionGroup>
             <button>
               <Search size={24} />
             </button>
             <button>
               <Menu size={24} />
             </button>
-          </ActionGroup>
-        </DesktopActions>
+        </DesktopActionGroup>
         <Logo />
         <SubscribeWrapper>
           <Button>
             Subscribe
           </Button>
-          <SubscribeCaption href="#">Already a subscriber?</SubscribeCaption>
+          <SubLink href="/">Already a subscriber?</SubLink>
           <VisuallyHidden>Subscribe</VisuallyHidden>
         </SubscribeWrapper>
       </MainHeader>
@@ -58,7 +56,7 @@ const SuperHeader = styled.div`
   background: var(--color-gray-900);
   color: white;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: none;
   }
 `;
@@ -88,34 +86,45 @@ const MainHeader = styled(MaxWidthWrapper)`
   margin-top: 32px;
   margin-bottom: 48px;
 
-  @media ${QUERIES.desktopAndUp} {
-    justify-content: space-between;
+  @media ${QUERIES.tabletAndUp} {
+    margin-top: 48px;
+    margin-bottom: 72px;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    margin-top: 16px;
+    margin-bottom: 72px;
   }
 `;
 
-const DesktopActions = styled.div`
+const DesktopActionGroup = styled(ActionGroup)`
   display: none;
 
-  @media ${QUERIES.desktopAndUp} {
-    display: revert;
+  @media ${QUERIES.laptopAndUp} {
+    display: flex;
   }
 `
 
 const SubscribeWrapper = styled.div`
   display: none;
 
-  @media ${QUERIES.desktopAndUp} {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+  @media ${QUERIES.laptopAndUp} {
+    display: revert;
+    position: relative;
+    justify-self: end;
   }
 `
 
-const SubscribeCaption = styled.a`
+const SubLink = styled.a`
+  position: absolute;
+  margin-top: 8px;
+  width: 100%;
+  text-align: center;
   font-style: italic;
   text-decoration: underline;
   font-size: ${14/16}rem;
-  color: ${COLORS.gray[900]};
+  color: var(--color-gray-900);
 `
 export default Header;
