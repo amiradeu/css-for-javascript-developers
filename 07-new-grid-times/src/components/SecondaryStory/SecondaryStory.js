@@ -51,11 +51,15 @@ const Heading = styled.h2`
 `;
 
 const Abstract = styled.p`
+  grid-area: abstract;
+  /* prevent grid from taking full height which prevents proper line clamping */
+  align-self: start;
+
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  /* Necessary for line clamping */
   overflow: hidden;
-  grid-area: abstract;
   font-size: 1rem;
   white-space: pre-wrap;
 `;

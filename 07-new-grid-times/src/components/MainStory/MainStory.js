@@ -46,6 +46,7 @@ const Abstract = styled.p`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 8;
+  /* Necessary for line clamping */
   overflow: hidden;
   font-size: 1rem;
   margin-bottom: 1em;
@@ -56,7 +57,7 @@ const Abstract = styled.p`
   }
 
   @media ${QUERIES.laptopAndUp} {
-    -webkit-line-clamp: 8;
+    -webkit-line-clamp: 10;
   }
 `;
 

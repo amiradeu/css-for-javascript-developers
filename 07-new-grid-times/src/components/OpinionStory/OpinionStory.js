@@ -19,21 +19,22 @@ const OpinionStory = ({ id, title, author, avatar }) => {
 const Wrapper = styled.article`
   display: grid;
   grid-template-areas:
-  'AuthorName Avatar'
-  'ArticleTitle Avatar';
+  'name avatar'
+  'title avatar';
   color: var(--color-gray-900);
 
   @media ${QUERIES.tabletOnly} {
     grid-template-areas:
-    'Avatar'
-    'AuthorName'
-    'ArticleTitle';
+    'avatar'
+    'name'
+    'title';
   }
 `;
 
 const Avatar = styled.img`
-  grid-area: Avatar;
+  grid-area: avatar;
   justify-self: end;
+  margin-left: 16px;
   display: block;
   width: 48px;
   height: 48px;
@@ -42,11 +43,12 @@ const Avatar = styled.img`
 
   @media ${QUERIES.tabletOnly} {
     justify-self: revert;
+    margin-left: revert;
   }
 `;
 
 const AuthorName = styled.p`
-  grid-area: AuthorName;
+  grid-area: name;
   font-size: 1.125rem;
   font-weight: var(--font-weight-medium);
   color: var(--color-gray-700);
@@ -54,7 +56,7 @@ const AuthorName = styled.p`
 `;
 
 const ArticleTitle = styled.h3`
-  grid-area: ArticleTitle;
+  grid-area: title;
   font-size: 1.125rem;
   font-weight: var(--font-weight-bold);
   line-height: 1.3;
