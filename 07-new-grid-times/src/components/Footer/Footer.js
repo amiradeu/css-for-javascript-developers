@@ -149,6 +149,7 @@ const TopRow = styled.div`
   @media ${QUERIES.tabletAndUp} {
     flex-direction: row;
     justify-content: center;
+    gap: 48px;
   }
 
   @media ${QUERIES.laptopAndUp} {
